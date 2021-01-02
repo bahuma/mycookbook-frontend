@@ -14,6 +14,7 @@ paths:
     post:
       tags:
         - Authentication
+      operationId: register
       summary: Register a new user
       requestBody:
         required: true
@@ -24,8 +25,10 @@ paths:
               properties:
                 email:
                   type: string
+                  format: email
                 password:
                   type: string
+                  format: password
       responses:
         '200':
           description: OK
@@ -35,6 +38,7 @@ paths:
     post:
       tags:
         - Authentication
+      operationId: login
       summary: Login and get a JWT
       requestBody:
         required: true
@@ -48,9 +52,11 @@ paths:
               properties:
                 username:
                   type: string
+                  format: email
                   description: The mail of the user
                 password:
                   type: string
+                  format: password
       responses:
         '200':
           description: OK
@@ -89,6 +95,7 @@ paths:
     get:
       tags:
         - Cookbooks
+      operationId: cookbooks_list
       summary: List own cookbooks
       responses:
         200:
@@ -106,6 +113,7 @@ paths:
     get:
       tags:
         - Recipes
+      operationId: recipes_list
       summary: List recipes of a cookbook
       parameters:
         - name: cookbook
@@ -128,6 +136,7 @@ paths:
     post:
       tags:
         - Recipes
+      operationId: recipes_import
       summary: Import a recipe from a website
       description: Extracts json+ld information from an url and stores it in the database
       parameters:
@@ -193,15 +202,33 @@ components:
         - id
         - title
         - cookbook
+        - schemaorg
       properties:
         id:
           type: integer
         title:
           type: string
-          example: Banana Break
+          example: Banana Bread
         cookbook:
           type: integer
           description: The id of the cookbook this recipe belongs to
+        source:
+          type: string
+          description: The url to the website where this recipe was imported from
+        image:
+          type: object
+          required:
+            - original
+            - thumbnail
+          properties:
+            original:
+              type: string
+              description: An url to the original unmodified image.
+              example: http://localhost:8000/media/recipes/771ca36d-58eb-4f0c-8387-6b12c3055ef0.png
+            thumbnail:
+              type: string
+              description: A smaller cropped version of the image in 4:3 aspect ratio.
+              example: http://localhost:8000/media/cache/resolve/recipe_thumbnail/media/recipes/771ca36d-58eb-4f0c-8387-6b12c3055ef0.png
         schemaorg:
           type: object
           description: Schema.org representation of type [Recipe](https://schema.org/Recipe)

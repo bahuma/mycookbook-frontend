@@ -1,0 +1,12 @@
+<mat-card *ngFor="let recipe of recipes">
+  <mat-card-header>
+    <mat-card-title>{{recipe.title}}</mat-card-title>
+    <mat-card-subtitle *ngIf="recipe.source">{{getSourceBase(recipe.source)}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{recipe.image.thumbnail}}" alt="{{recipe.title}}">
+  <mat-card-content *ngIf="recipe.schemaorg.description">
+    <p>
+      {{recipe.schemaorg.description}}
+    </p>
+  </mat-card-content>
+</mat-card>

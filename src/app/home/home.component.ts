@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CookbooksService} from '../../openapi';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  cookbook: any;
 
-  constructor() { }
+  constructor(private cookbooksService: CookbooksService) { }
 
   ngOnInit(): void {
+    this.cookbooksService.cookbooksList().subscribe(cookbooks => {
+      this.cookbook = cookbooks[0].id;
+    });
   }
 
 }

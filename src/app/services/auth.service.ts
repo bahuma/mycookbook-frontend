@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AuthenticationService} from '../../openapi';
 import * as moment from 'moment';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
 
   login(email: string, password: string ): Observable<any> {
     return new Observable(subscriber => {
-      this.authApi.authLoginPost({
+      this.authApi.login({
         username: email,
         password,
       }).subscribe(data => {

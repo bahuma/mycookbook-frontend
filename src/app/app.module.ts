@@ -16,12 +16,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
 import { HomeComponent } from './home/home.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RecipeListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
     FormsModule,
     HttpClientModule,
     ApiModule,
