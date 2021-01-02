@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CookbooksService, RecipesService} from '../openapi';
 
 @Component({
   selector: 'app-root',

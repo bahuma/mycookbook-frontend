@@ -1,0 +1,25 @@
+<h1>Login</h1>
+<form [formGroup]="form" fxLayout="column" fxLayoutGap="20px">
+  <mat-form-field>
+    <input matInput placeholder="E-Mail" type="email" name="email" formControlName="email" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="form.get('email').hasError('email') && !form.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="form.get('email').hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" type="password" name="password" formControlName="password">
+    <mat-error *ngIf="form.get('password').hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="login()">Login</button>
+
+  <mat-error *ngIf="globalerror">
+    The provided credentials are not correct.
+  </mat-error>
+</form>

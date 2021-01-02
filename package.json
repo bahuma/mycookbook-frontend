@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prestart": "npm run generate:api",
     "build": "ng build",
+    "prebuild": "npm run generate:api",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "generate:api": "openapi-generator-cli generate -g typescript-angular -i ./api.yaml -o ./src/openapi"
   },
   "private": true,
   "dependencies": {
@@ -16,11 +19,15 @@
     "@angular/common": "~11.0.3",
     "@angular/compiler": "~11.0.3",
     "@angular/core": "~11.0.3",
+    "@angular/flex-layout": "^11.0.0-beta.33",
     "@angular/forms": "~11.0.3",
     "@angular/material": "^11.0.3",
     "@angular/platform-browser": "~11.0.3",
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
+    "@auth0/angular-jwt": "^5.0.2",
+    "@openapitools/openapi-generator-cli": "^2.1.16",
+    "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
