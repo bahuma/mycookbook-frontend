@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Add a recipe to your cookbook</h2>
+
+<mat-dialog-content>
+  <p>Just past the URL of a website, that contains a recipe, in the field below.</p>
+
+  <form [formGroup]="form" fxLayout="column" fxLayoutGap="20px">
+    <mat-form-field>
+      <input matInput placeholder="URL" type="text" name="url" formControlName="url" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="form.get('url').hasError('pattern') && !form.get('url').hasError('required')">
+        Please enter a valid URL
+      </mat-error>
+      <mat-error *ngIf="form.get('url').hasError('required')">
+        URL is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <mat-error *ngIf="globalerror">
+    The recipe could not be added.
+  </mat-error>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button class="mat-raised-button" (click)="close()">Cancel</button>
+  <button mat-button class="mat-raised-button mat-primary" (click)="submit()">Submit</button>
+</mat-dialog-actions>

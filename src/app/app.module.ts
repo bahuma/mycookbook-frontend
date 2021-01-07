@@ -18,13 +18,17 @@ import {AuthInterceptorService} from './services/auth-interceptor.service';
 import { HomeComponent } from './home/home.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogAddRecipeComponent } from './dialog-add-recipe/dialog-add-recipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    DialogAddRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatIconModule,
+    MatDialogModule,
     FormsModule,
     HttpClientModule,
     ApiModule,

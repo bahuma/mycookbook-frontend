@@ -2,7 +2,7 @@
 <form [formGroup]="form" fxLayout="column" fxLayoutGap="20px">
   <mat-form-field>
     <input matInput placeholder="E-Mail" type="email" name="email" formControlName="email" [errorStateMatcher]="matcher">
-    <mat-error *ngIf="form.get('email').hasError('email') && !form.hasError('required')">
+    <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
       Please enter a valid email address
     </mat-error>
     <mat-error *ngIf="form.get('email').hasError('required')">
